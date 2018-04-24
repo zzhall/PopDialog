@@ -123,16 +123,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnTopRight:
                 new PopDialog(MainActivity.this)
-                        .setLayoutResourceId(R.layout.layout_tip_image_text)
+                        .setLayoutResourceId(R.layout.layout_tip_content_horizontal)
+                        .setOnViewItemClickListener((clickView, dialog) -> { // 气泡子控件点击事件
+                            dialog.dismiss();
+                            switch (clickView.getId()) {
+                                case R.id.btn_got_it:
+                                    Toast.makeText(this, "R.id.btn_got_it", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case R.id.tv_content:
+                                    Toast.makeText(this, "R.id.tv_content", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }, R.id.btn_got_it, R.id.tv_content)
                         .setGravity(PopDialog.GRAVITY_BOTTOM)
                         .setBackgroundColor(MainActivity.this.getResources().getColor(R.color.background_color_black))
                         .setLocationByAttachedView(btnTopRight)
                         .setAnimationTranslationShow(PopDialog.DIRECTION_X, 350, 400, 0)
                         .setAnimationTranslationDismiss(PopDialog.DIRECTION_X, 350, 0, 400)
-                        .setTouchOutsideDismiss(true)
+                        .setTouchOutsideDismiss(false)
                         .setMatchParent(false)
                         .setMarginLeftAndRight(24, 24)
-                        .setOutsideColor(MainActivity.this.getResources().getColor(R.color.outside_color_trans))
+                        .setOutsideColor(MainActivity.this.getResources().getColor(R.color.outside_color_gray))
                         .setOnPopDialogDismissed(() -> Toast.makeText(MainActivity.this, "dismiss", Toast.LENGTH_SHORT).show())
                         .setOnPopDialogShow(() -> Toast.makeText(MainActivity.this, "show", Toast.LENGTH_SHORT).show())
                         .show();
@@ -208,18 +219,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnBottomRight:
                 new PopDialog(MainActivity.this)
-                        .setLayoutResourceId(R.layout.layout_tip_image_text)
-                        .setBackgroundColor(MainActivity.this.getResources().getColor(R.color.background_color_yellow))
+                        .setLayoutResourceId(R.layout.layout_tip_content_horizontal)
+                        .setOnViewItemClickListener((clickView, dialog) -> { // 气泡子控件点击事件
+                            dialog.dismiss();
+                            switch (clickView.getId()) {
+                                case R.id.btn_got_it:
+                                    Toast.makeText(this, "R.id.btn_got_it", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case R.id.tv_content:
+                                    Toast.makeText(this, "R.id.tv_content", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }, R.id.btn_got_it, R.id.tv_content)
+                        .setBackgroundColor(MainActivity.this.getResources().getColor(R.color.background_color_black))
                         .setLocationByAttachedView(btnBottomRight)
                         .setGravity(PopDialog.GRAVITY_TOP)
                         .setAnimationTranslationShow(PopDialog.DIRECTION_X, 300, 400, 0)
                         .setAnimationTranslationShow(PopDialog.DIRECTION_Y, 300, 400, 0)
                         .setAnimationTranslationDismiss(PopDialog.DIRECTION_X, 300, 0, 400)
                         .setAnimationTranslationDismiss(PopDialog.DIRECTION_Y, 300, 0, 400)
-                        .setTouchOutsideDismiss(true)
+                        .setTouchOutsideDismiss(false)
                         .setMatchParent(false)
                         .setMarginLeftAndRight(24, 24)
-                        .setOutsideColor(MainActivity.this.getResources().getColor(R.color.outside_color_trans))
+                        .setOutsideColor(MainActivity.this.getResources().getColor(R.color.outside_color_gray))
                         .show();
                 break;
         }

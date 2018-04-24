@@ -180,6 +180,10 @@ public class PopDialog {
         return this;
     }
 
+    public View getLayout() {
+        return this.contentView;
+    }
+
     /**
      * 设置提示框中要显示的内容的布局Id
      */
